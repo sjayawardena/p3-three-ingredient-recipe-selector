@@ -52,9 +52,9 @@ def validate_recipe_type_choice(choice):
 def sweet_or_savoury():
     chosen_recipe_type = choose_recipe_type()
     if chosen_recipe_type == "sweet":
-        print(sweet_chosen())
+        sweet_chosen()
     elif chosen_recipe_type == "savoury":
-        print(savoury_chosen())
+        savoury_chosen()
 
 
 def sweet_chosen():
@@ -64,16 +64,18 @@ def sweet_chosen():
     """
     print("Here is your randomly selected sweet recipe...\n")
     sweet_sheet = SHEET.worksheet("sweet")
-    # Update last number in range as list grows
+    # Update last number in range as list grows ++STILL TO DO+++
     sweet_item = sweet_sheet.row_values(random.randint(2, 3))
-    return sweet_item
+    # Parse steps from Google Doc for each recipe ++STILL TO DO+++
+    print(f"RECIPE: {sweet_item[0]}\nIndredient 1: {sweet_item[1]}\nIngredient 2: {
+          sweet_item[2]}\nIngredient 3: {sweet_item[3]}\nUnder 30 minutes? {sweet_item[4]}\n\nSTEPS: \n")
 
 
 def savoury_chosen():
     """
     Checks if user wants meat or no meat.
-    Use a while loop to check if the user has entered "meat"
-    or "no meat" from the terminal.
+    Use a while loop to check if the user has successfully
+    entered "meat" or "no meat" from the terminal.
     Then randomly selects a recipe from the "savoury, meat" or 
     the "savoury, no meat" worksheet of the linked Google Sheet.
     """
@@ -87,16 +89,20 @@ def savoury_chosen():
     if meat_or_not == "meat":
         print("Here is your randomly selected savoury with meat recipe...\n")
         savoury_meat_sheet = SHEET.worksheet("savoury, meat")
-        # Update last number in range as list grows
+        # Update last number in range as list grows ++STILL TO DO+++
         savoury_meat_item = savoury_meat_sheet.row_values(random.randint(2, 3))
-        return savoury_meat_item
+        # Parse steps from Google Doc for each recipe ++STILL TO DO+++
+        print(f"RECIPE: {savoury_meat_item[0]}\nIndredient 1: {savoury_meat_item[1]}\nIngredient 2: {
+              savoury_meat_item[2]}\nIngredient 3: {savoury_meat_item[3]}\nUnder 30 minutes? {savoury_meat_item[4]}\n\nSTEPS: \n")
     elif meat_or_not == "no meat":
         print("Here is your randomly selected savoury without meat recipe...\n")
         savoury_no_meat_sheet = SHEET.worksheet("savoury, no meat")
-        # Update last number in range as list grows
+        # Update last number in range as list grows ++STILL TO DO+++
         savoury_no_meat_item = savoury_no_meat_sheet.row_values(
             random.randint(2, 3))
-        return savoury_no_meat_item
+        # Parse steps from Google Doc for each recipe ++STILL TO DO+++
+        print(f"RECIPE: {savoury_no_meat_item[0]}\nIndredient 1: {savoury_no_meat_item[1]}\nIngredient 2: {
+              savoury_no_meat_item[2]}\nIngredient 3: {savoury_no_meat_item[3]}\nUnder 30 minutes? {savoury_no_meat_item[4]}\n\nSTEPS: \n")
 
 
 def validate_meat_or_not(choice):
