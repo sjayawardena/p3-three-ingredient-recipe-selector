@@ -67,8 +67,7 @@ def sweet_chosen():
     # Update last number in range as list grows ++STILL TO DO+++
     sweet_item = sweet_sheet.row_values(random.randint(2, 3))
     # Parse steps from Google Doc for each recipe ++STILL TO DO+++
-    print(f"RECIPE: {sweet_item[0]}\nIndredient 1: {sweet_item[1]}\nIngredient 2: {
-          sweet_item[2]}\nIngredient 3: {sweet_item[3]}\nUnder 30 minutes? {sweet_item[4]}\n\nSTEPS: \n")
+    print(f"RECIPE: {sweet_item[0]}\nIndredient 1: {sweet_item[1]}\nIngredient 2: {sweet_item[2]}\nIngredient 3: {sweet_item[3]}\nUnder 30 minutes? {sweet_item[4]}\n\nSTEPS: \n")
 
 
 def savoury_chosen():
@@ -101,8 +100,7 @@ def savoury_chosen():
         savoury_no_meat_item = savoury_no_meat_sheet.row_values(
             random.randint(2, 3))
         # Parse steps from Google Doc for each recipe ++STILL TO DO+++
-        print(f"RECIPE: {savoury_no_meat_item[0]}\nIndredient 1: {savoury_no_meat_item[1]}\nIngredient 2: {
-              savoury_no_meat_item[2]}\nIngredient 3: {savoury_no_meat_item[3]}\nUnder 30 minutes? {savoury_no_meat_item[4]}\n\nSTEPS: \n")
+        print(f"RECIPE: {savoury_no_meat_item[0]}\nIndredient 1: {savoury_no_meat_item[1]}\nIngredient 2: {savoury_no_meat_item[2]}\nIngredient 3: {savoury_no_meat_item[3]}\nUnder 30 minutes? {savoury_no_meat_item[4]}\n\nSTEPS: \n")
 
 
 def validate_meat_or_not(choice):
