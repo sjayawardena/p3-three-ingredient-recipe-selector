@@ -27,7 +27,7 @@ def choose_recipe_type():
             'Please enter either "sweet" or "savoury": \n')
         recipe_type_choice = input_recipe_type_choice
         if validate_recipe_type_choice(recipe_type_choice):
-            print(f"Thank you for choosing {recipe_type_choice}!\n")
+            print(f"\nThank you for choosing {recipe_type_choice}!\n")
             break
     return recipe_type_choice
 
@@ -59,7 +59,7 @@ def sweet_or_savoury():
 
 def sweet_chosen():
     """
-    Randomly selects a recipe from the 
+    Randomly selects a recipe from the
     "sweet" worksheet of the linked Google Sheet.
     """
     print("Here is your randomly selected sweet recipe...\n")
@@ -76,7 +76,7 @@ def savoury_chosen():
     Checks if user wants meat or no meat.
     Use a while loop to check if the user has successfully
     entered "meat" or "no meat" from the terminal.
-    Then randomly selects a recipe from the "savoury, meat" or 
+    Then randomly selects a recipe from the "savoury, meat" or
     the "savoury, no meat" worksheet of the linked Google Sheet.
     """
     while True:
@@ -84,7 +84,7 @@ def savoury_chosen():
             'Please enter either "meat" or "no meat": \n')
         meat_or_not = input_meat_or_not
         if validate_meat_or_not(meat_or_not):
-            print(f"Thank you for choosing {meat_or_not}!\n")
+            print(f"\nThank you for choosing {meat_or_not}!\n")
             break
     if meat_or_not == "meat":
         print("Here is your randomly selected savoury with meat recipe...\n")
@@ -122,11 +122,83 @@ def validate_meat_or_not(choice):
         return False
 
 
+def happy_with_recipe():
+    """
+    Ask user whether happy with recipe choice.
+    Use a while loop to validate whether user has entered "yes" or "no"
+    via the terminal.
+    The user will be repeatedly prompted to enter their choice until valid.
+    Offer user a choice of how to proceed if they are not happy.
+    """
+    while True:
+        input_is_user_happy = input(
+            'Are you happy with the recipe selected for you? \nPlease enter "yes" or "no":\n')
+        is_user_happy = input_is_user_happy
+        if validate_is_user_happy(is_user_happy):
+            print(f"\nYou chose {is_user_happy}...\n")
+            break
+    if is_user_happy == "yes":
+        print("Great! Enjoy your dish!\n")
+    elif is_user_happy == "no":
+        try_again()
+        
+        
+def try_again():
+    while True:
+        input_try_again = input(
+            'Would you like to try again?\nPlease enter "yes" or "no".\n')
+        try_again = input_try_again
+        if validate_try_again(try_again):
+            print(f"\nYou chose {try_again}...\n")
+            break
+    if try_again == "yes":
+        main()
+    elif try_again == "no":
+        print("Sorry we couldn't help today. Please come back soon. Goodbye!\n")
+
+
+def validate_is_user_happy(choice):
+    """
+    Return True if user entered "yes" or "no" in response to if they
+    are happy with recipe.
+    If not, then raise a value error, prompting them to try again.
+    """
+    if choice == "yes" or choice == "no":
+        return True
+    try:
+        if choice != "yes" or choice != "no":
+            raise ValueError(
+                f'You entered "{choice}"'
+            )
+    except ValueError as e:
+        print(f"Invalid choice: {e}, please try again.\n")
+        return False
+
+
+def validate_try_again(choice):
+    """
+    Return True if user entered "yes" or "no" in response to if they
+    would like to try the recipe selector again.
+    If not, then raise a value error, prompting them to try again.
+    """
+    if choice == "yes" or choice == "no":
+        return True
+    try:
+        if choice != "yes" or choice != "no":
+            raise ValueError(
+                f'You entered "{choice}"'
+            )
+    except ValueError as e:
+        print(f"Invalid choice: {e}, please try again.\n")
+        return False
+
+
 def main():
     """
     Run all main functions.
     """
     sweet_or_savoury()
+    happy_with_recipe()
 
 
 main()
