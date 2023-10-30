@@ -48,6 +48,11 @@ def validate_recipe_type_choice(choice):
         return False
 
 def main():
-    choose_recipe_type()
+    chosen_recipe_type = choose_recipe_type()
 
 main()
+
+#Example of getting stuff from sheet
+#list_of_lists = SHEET.worksheet("sweet")
+#data = list_of_lists.get_all_values()
+#print(data)
