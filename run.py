@@ -22,7 +22,7 @@ def choose_recipe_type():
     via the terminal.
     The user will be repeatedly prompted to enter their choice until valid.
     """
-    print("Welcome to the Three-Ingredient Recipe Selector.")
+    print("Welcome to the Three-Ingredient Recipe Selector./n")
     while True:
         input_recipe_type_choice = input(
             'Please enter either "sweet" or "savoury": \n')
