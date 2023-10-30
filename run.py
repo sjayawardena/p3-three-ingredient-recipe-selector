@@ -91,8 +91,7 @@ def savoury_chosen():
         # Update last number in range as list grows ++STILL TO DO+++
         savoury_meat_item = savoury_meat_sheet.row_values(random.randint(2, 3))
         # Parse steps from Google Doc for each recipe ++STILL TO DO+++
-        print(f"RECIPE: {savoury_meat_item[0]}\nIndredient 1: {savoury_meat_item[1]}\nIngredient 2: {
-              savoury_meat_item[2]}\nIngredient 3: {savoury_meat_item[3]}\nUnder 30 minutes? {savoury_meat_item[4]}\n\nSTEPS: \n")
+        print(f"RECIPE: {savoury_meat_item[0]}\nIndredient 1: {savoury_meat_item[1]}\nIngredient 2: {savoury_meat_item[2]}\nIngredient 3: {savoury_meat_item[3]}\nUnder 30 minutes? {savoury_meat_item[4]}\n\nSTEPS: \n")
     elif meat_or_not == "no meat":
         print("Here is your randomly selected savoury without meat recipe...\n")
         savoury_no_meat_sheet = SHEET.worksheet("savoury, no meat")
