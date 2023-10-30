@@ -71,9 +71,49 @@ def sweet_chosen():
 
 def savoury_chosen():
     """
-
+    Checks if user wants meat or no meat.
+    Use a while loop to check if the user has entered "meat"
+    or "no meat" from the terminal.
+    Then randomly selects a recipe from the "savoury, meat" or 
+    the "savoury, no meat" worksheet of the linked Google Sheet.
     """
-    print("Here is your randomly selected savoury recipe...")
+    while True:
+        input_meat_or_not = input(
+            'Please enter either "meat" or "no meat": \n')
+        meat_or_not = input_meat_or_not
+        if validate_meat_or_not(meat_or_not):
+            print(f"Thank you for choosing {meat_or_not}!\n")
+            break
+    if meat_or_not == "meat":
+        print("Here is your randomly selected savoury with meat recipe...\n")
+        savoury_meat_sheet = SHEET.worksheet("savoury, meat")
+        # Update last number in range as list grows
+        savoury_meat_item = savoury_meat_sheet.row_values(random.randint(2, 3))
+        return savoury_meat_item
+    elif meat_or_not == "no meat":
+        print("Here is your randomly selected savoury without meat recipe...\n")
+        savoury_no_meat_sheet = SHEET.worksheet("savoury, no meat")
+        # Update last number in range as list grows
+        savoury_no_meat_item = savoury_no_meat_sheet.row_values(
+            random.randint(2, 3))
+        return savoury_no_meat_item
+
+
+def validate_meat_or_not(choice):
+    """
+    Return True if user entered "meat" or "no meat".
+    If not, then raise a value error, prompting them to try again.
+    """
+    if choice == "meat" or choice == "no meat":
+        return True
+    try:
+        if choice != "meat" or choice != "no meat":
+            raise ValueError(
+                f'You entered "{choice}"'
+            )
+    except ValueError as e:
+        print(f"Invalid choice: {e}, please try again.\n")
+        return False
 
 
 def main():
