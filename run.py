@@ -1,3 +1,4 @@
+import random
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -26,7 +27,7 @@ def choose_recipe_type():
             'Please enter either "sweet" or "savoury": \n')
         recipe_type_choice = input_recipe_type_choice
         if validate_recipe_type_choice(recipe_type_choice):
-            print(f"Thank you for choosing {recipe_type_choice}!")
+            print(f"Thank you for choosing {recipe_type_choice}!\n")
             break
     return recipe_type_choice
 
@@ -47,12 +48,44 @@ def validate_recipe_type_choice(choice):
         print(f"Invalid choice: {e}, please try again.\n")
         return False
 
-def main():
+
+def sweet_or_savoury():
     chosen_recipe_type = choose_recipe_type()
+    if chosen_recipe_type == "sweet":
+        print(sweet_chosen())
+    elif chosen_recipe_type == "savoury":
+        print(savoury_chosen())
+
+
+def sweet_chosen():
+    """
+    Randomly selects a recipe from the 
+    "sweet" worksheet of the linked Google Sheet.
+    """
+    print("Here is your randomly selected sweet recipe...\n")
+    sweet_sheet = SHEET.worksheet("sweet")
+    # Update last number in range as list grows
+    sweet_item = sweet_sheet.row_values(random.randint(2, 3))
+    return sweet_item
+
+
+def savoury_chosen():
+    """
+
+    """
+    print("Here is your randomly selected savoury recipe...")
+
+
+def main():
+    """
+    Run all main functions.
+    """
+    sweet_or_savoury()
+
 
 main()
 
-#Example of getting stuff from sheet
-#list_of_lists = SHEET.worksheet("sweet")
-#data = list_of_lists.get_all_values()
-#print(data)
+# Examples of getting stuff from sheet
+# sweet_sheet = SHEET.worksheet("sweet")
+# sweet_item = sweet_sheet.row_values(random.randint(2, 3))
+# print(sweet_item)
