@@ -4,7 +4,6 @@ from google.oauth2.service_account import Credentials
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
-    "https://www.googleapis.com/auth/documents",
     "https://www.googleapis.com/auth/drive.file",
     "https://www.googleapis.com/auth/drive"
 ]
@@ -65,10 +64,16 @@ def sweet_chosen():
     """
     print("Here is your randomly selected sweet recipe...\n")
     sweet_sheet = SHEET.worksheet("sweet")
-    # Update last number in range as list grows ++STILL TO DO+++
-    sweet_item = sweet_sheet.row_values(random.randint(2, 3))
-    # Parse steps from Google Doc for each recipe ++STILL TO DO+++
-    print(f"RECIPE: {sweet_item[0]}\nIndredient 1: {sweet_item[1]}\nIngredient 2: {sweet_item[2]}\nIngredient 3: {sweet_item[3]}\nUnder 30 minutes? {sweet_item[4]}\n\nSTEPS: \n")
+    sweet_item = sweet_sheet.row_values(random.randint(2, 11))
+    print(
+        f"RECIPE: {sweet_item[0]}\n" +
+        f"\nIndredient 1: {sweet_item[1]}\n" +
+        f"Ingredient 2: {sweet_item[2]}\n" +
+        f"Ingredient 3: {sweet_item[3]}\n" +
+        f"\n30 minutes or under? {sweet_item[4]}\n" +
+        f"\nSTEPS: \n" +
+        f"\n{sweet_item[5]}"
+    )
 
 
 def savoury_chosen():
@@ -89,18 +94,30 @@ def savoury_chosen():
     if meat_or_not == "meat":
         print("Here is your randomly selected savoury with meat recipe...\n")
         savoury_meat_sheet = SHEET.worksheet("savoury, meat")
-        # Update last number in range as list grows ++STILL TO DO+++
-        savoury_meat_item = savoury_meat_sheet.row_values(random.randint(2, 3))
-        # Parse steps from Google Doc for each recipe ++STILL TO DO+++
-        print(f"RECIPE: {savoury_meat_item[0]}\nIndredient 1: {savoury_meat_item[1]}\nIngredient 2: {savoury_meat_item[2]}\nIngredient 3: {savoury_meat_item[3]}\nUnder 30 minutes? {savoury_meat_item[4]}\n\nSTEPS: \n")
+        savoury_meat_item = savoury_meat_sheet.row_values(random.randint(2, 11))
+        print(
+            f"RECIPE: {savoury_meat_item[0]}\n" +
+            f"\nIndredient 1: {savoury_meat_item[1]}\n" +
+            f"Ingredient 2: {savoury_meat_item[2]}\n" +
+            f"Ingredient 3: {savoury_meat_item[3]}\n" +
+            f"\n30 minutes or under? {savoury_meat_item[4]}\n" +
+            f"\nSTEPS: \n" +
+            f"\n{savoury_meat_item[5]}"
+        )
     elif meat_or_not == "no meat":
         print("Here is your randomly selected savoury without meat recipe...\n")
         savoury_no_meat_sheet = SHEET.worksheet("savoury, no meat")
-        # Update last number in range as list grows ++STILL TO DO+++
         savoury_no_meat_item = savoury_no_meat_sheet.row_values(
-            random.randint(2, 3))
-        # Parse steps from Google Doc for each recipe ++STILL TO DO+++
-        print(f"RECIPE: {savoury_no_meat_item[0]}\nIndredient 1: {savoury_no_meat_item[1]}\nIngredient 2: {savoury_no_meat_item[2]}\nIngredient 3: {savoury_no_meat_item[3]}\nUnder 30 minutes? {savoury_no_meat_item[4]}\n\nSTEPS: \n")
+            random.randint(2, 11))
+        print(
+            f"RECIPE: {savoury_no_meat_item[0]}\n" +
+            f"\nIndredient 1: {savoury_no_meat_item[1]}\n" +
+            f"Ingredient 2: {savoury_no_meat_item[2]}\n" +
+            f"Ingredient 3: {savoury_no_meat_item[3]}\n" +
+            f"\n30 minutes or under? {savoury_no_meat_item[4]}\n" +
+            f"\nSTEPS: \n" +
+            f"\n{savoury_no_meat_item[5]}"
+        )
 
 
 def validate_meat_or_not(choice):
@@ -130,21 +147,21 @@ def happy_with_recipe():
     """
     while True:
         input_is_user_happy = input(
-            'Are you happy with the recipe selected for you? \nPlease enter "yes" or "no":\n')
+            '\nAre you happy with the recipe selected for you? \nPlease enter "yes" or "no":\n')
         is_user_happy = input_is_user_happy
         if validate_is_user_happy(is_user_happy):
             print(f"\nYou chose {is_user_happy}...\n")
             break
     if is_user_happy == "yes":
-        print("Great! Enjoy your dish!\n")
+        print("\nGreat! Enjoy your dish!\n")
     elif is_user_happy == "no":
         try_again()
-        
-        
+
+
 def try_again():
     while True:
         input_try_again = input(
-            'Would you like to try again?\nPlease enter "yes" or "no".\n')
+            '\nWould you like to try again?\nPlease enter "yes" or "no".\n')
         try_again = input_try_again
         if validate_try_again(try_again):
             print(f"\nYou chose {try_again}...\n")
@@ -152,7 +169,7 @@ def try_again():
     if try_again == "yes":
         main()
     elif try_again == "no":
-        print("Sorry we couldn't help today. Please come back soon. Goodbye!\n")
+        print("\nSorry we couldn't help today. Please come back soon. Goodbye!\n")
 
 
 def validate_is_user_happy(choice):
