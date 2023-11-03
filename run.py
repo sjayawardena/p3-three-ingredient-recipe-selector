@@ -200,8 +200,8 @@ def try_again():
         main()
     elif try_again == "no":
         print(
-            "\nSorry we couldn't help today.\
-        Please come back soon. Goodbye!\n"
+            "\nSorry we couldn't help today. \
+Please come back soon. Goodbye!\n"
         )
         sys.exit()
 
