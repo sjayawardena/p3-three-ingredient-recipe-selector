@@ -8,13 +8,13 @@ from google.oauth2.service_account import Credentials
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
-    "https://www.googleapis.com/auth/drive"
+    "https://www.googleapis.com/auth/drive",
 ]
 
-CREDS = Credentials.from_service_account_file('creds.json')
+CREDS = Credentials.from_service_account_file("creds.json")
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-SHEET = GSPREAD_CLIENT.open('p3-three-ingredient-recipe-selector')
+SHEET = GSPREAD_CLIENT.open("p3-three-ingredient-recipe-selector")
 
 
 def choose_recipe_type():
@@ -27,7 +27,8 @@ def choose_recipe_type():
     print("Welcome to the Three-Ingredient Recipe Selector.\n")
     while True:
         input_recipe_type_choice = input(
-            'Please enter either "sweet" or "savoury": \n').lower()
+            'Please enter either "sweet" or "savoury": \n'
+        ).lower()
         recipe_type_choice = input_recipe_type_choice
         if validate_recipe_type_choice(recipe_type_choice):
             print(f"\nThank you for choosing {recipe_type_choice}!\n")
@@ -44,16 +45,14 @@ def validate_recipe_type_choice(choice):
         return True
     try:
         if choice != "sweet" or choice != "savoury":
-            raise ValueError(
-                f'You entered "{choice}"'
-            )
+            raise ValueError(f'You entered "{choice}"')
     except ValueError as e:
         print(f"Invalid choice: {e}, please try again.\n")
         return False
 
 
 def sweet_or_savoury():
-    """ 
+    """
     Give user a choice of sweet or savoury recipes.
     Run corresponding function for each choice.
     """
@@ -66,7 +65,7 @@ def sweet_or_savoury():
 
 def sweet_chosen():
     """
-    Randomly selects a recipe from the "sweet" worksheet of the 
+    Randomly selects a recipe from the "sweet" worksheet of the
     linked Google Sheet.
     Includes 4-second time delays between 'fetching' message
     and recipe and steps appearing.
@@ -76,18 +75,15 @@ def sweet_chosen():
     sweet_sheet = SHEET.worksheet("sweet")
     sweet_item = sweet_sheet.row_values(random.randint(2, 11))
     print(
-        f"RECIPE: {sweet_item[0]}\n" +
-        f"\nIndredient 1: {sweet_item[1]}\n" +
-        f"Ingredient 2: {sweet_item[2]}\n" +
-        f"Ingredient 3: {sweet_item[3]}\n" +
-        f"\n30 minutes or under? {sweet_item[4]}\n"
+        f"RECIPE: {sweet_item[0]}\n"
+        + f"\nIndredient 1: {sweet_item[1]}\n"
+        + f"Ingredient 2: {sweet_item[2]}\n"
+        + f"Ingredient 3: {sweet_item[3]}\n"
+        + f"\n30 minutes or under? {sweet_item[4]}\n"
     )
     print("\nFetching cooking steps...\n")
     time.sleep(4)
-    print(
-        "\nSTEPS: \n" +
-        f"\n{sweet_item[5]}"
-    )
+    print("\nSTEPS: \n" + f"\n{sweet_item[5]}")
 
 
 def savoury_chosen():
@@ -101,8 +97,7 @@ def savoury_chosen():
     and recipe and steps appearing.
     """
     while True:
-        input_meat_or_not = input(
-            'Please enter either "meat" or "no meat": \n').lower()
+        input_meat_or_not = input('Please enter either "meat" or "no meat": \n').lower()
         meat_or_not = input_meat_or_not
         if validate_meat_or_not(meat_or_not):
             print(f"\nThank you for choosing {meat_or_not}!\n")
@@ -111,40 +106,32 @@ def savoury_chosen():
         print("Fetching your randomly selected savoury with meat recipe...\n")
         time.sleep(4)
         savoury_meat_sheet = SHEET.worksheet("savoury, meat")
-        savoury_meat_item = savoury_meat_sheet.row_values(
-            random.randint(2, 11))
+        savoury_meat_item = savoury_meat_sheet.row_values(random.randint(2, 11))
         print(
-            f"RECIPE: {savoury_meat_item[0]}\n" +
-            f"\nIndredient 1: {savoury_meat_item[1]}\n" +
-            f"Ingredient 2: {savoury_meat_item[2]}\n" +
-            f"Ingredient 3: {savoury_meat_item[3]}\n" +
-            f"\n30 minutes or under? {savoury_meat_item[4]}\n"
+            f"RECIPE: {savoury_meat_item[0]}\n"
+            + f"\nIndredient 1: {savoury_meat_item[1]}\n"
+            + f"Ingredient 2: {savoury_meat_item[2]}\n"
+            + f"Ingredient 3: {savoury_meat_item[3]}\n"
+            + f"\n30 minutes or under? {savoury_meat_item[4]}\n"
         )
         print("\nFetching cooking steps...\n")
         time.sleep(4)
-        print(
-            "\nSTEPS: \n" +
-            f"\n{savoury_meat_item[5]}"
-        )
+        print("\nSTEPS: \n" + f"\n{savoury_meat_item[5]}")
     elif meat_or_not == "no meat":
         print("Fetching your randomly selected savoury without meat recipe...\n")
         time.sleep(4)
         savoury_no_meat_sheet = SHEET.worksheet("savoury, no meat")
-        savoury_no_meat_item = savoury_no_meat_sheet.row_values(
-            random.randint(2, 10))
+        savoury_no_meat_item = savoury_no_meat_sheet.row_values(random.randint(2, 10))
         print(
-            f"RECIPE: {savoury_no_meat_item[0]}\n" +
-            f"\nIndredient 1: {savoury_no_meat_item[1]}\n" +
-            f"Ingredient 2: {savoury_no_meat_item[2]}\n" +
-            f"Ingredient 3: {savoury_no_meat_item[3]}\n" +
-            f"\n30 minutes or under? {savoury_no_meat_item[4]}\n"
+            f"RECIPE: {savoury_no_meat_item[0]}\n"
+            + f"\nIndredient 1: {savoury_no_meat_item[1]}\n"
+            + f"Ingredient 2: {savoury_no_meat_item[2]}\n"
+            + f"Ingredient 3: {savoury_no_meat_item[3]}\n"
+            + f"\n30 minutes or under? {savoury_no_meat_item[4]}\n"
         )
         print("\nFetching cooking steps...\n")
         time.sleep(4)
-        print(
-            f"\nSTEPS: \n"
-            f"\n{savoury_no_meat_item[5]}"
-        )
+        print(f"\nSTEPS: \n" f"\n{savoury_no_meat_item[5]}")
 
 
 def validate_meat_or_not(choice):
@@ -156,9 +143,7 @@ def validate_meat_or_not(choice):
         return True
     try:
         if choice != "meat" or choice != "no meat":
-            raise ValueError(
-                f'You entered "{choice}"'
-            )
+            raise ValueError(f'You entered "{choice}"')
     except ValueError as e:
         print(f"Invalid choice: {e}, please try again.\n")
         return False
@@ -175,8 +160,8 @@ def happy_with_recipe():
     """
     while True:
         input_is_user_happy = input(
-            '\nAre you happy with the recipe selected for you?' +
-            '\nPlease enter "yes" or "no":\n'
+            "\nAre you happy with the recipe selected for you?"
+            + '\nPlease enter "yes" or "no":\n'
         ).lower()
         is_user_happy = input_is_user_happy
         if validate_is_user_happy(is_user_happy):
@@ -190,14 +175,15 @@ def happy_with_recipe():
 
 
 def try_again():
-    """ 
+    """
     Offer user to start the process again if not happy with recipe.
     If yes, run main() function from start.
     If not, goodbye message and sys.exit().
     """
     while True:
         input_try_again = input(
-            '\nWould you like to try again?\nPlease enter "yes" or "no".\n').lower()
+            '\nWould you like to try again?\nPlease enter "yes" or "no".\n'
+        ).lower()
         try_again = input_try_again
         if validate_try_again(try_again):
             print(f"\nYou chose {try_again}...\n")
@@ -219,9 +205,7 @@ def validate_is_user_happy(choice):
         return True
     try:
         if choice != "yes" or choice != "no":
-            raise ValueError(
-                f'You entered "{choice}"'
-            )
+            raise ValueError(f'You entered "{choice}"')
     except ValueError as e:
         print(f"Invalid choice: {e}, please try again.\n")
         return False
@@ -237,9 +221,7 @@ def validate_try_again(choice):
         return True
     try:
         if choice != "yes" or choice != "no":
-            raise ValueError(
-                f'You entered "{choice}"'
-            )
+            raise ValueError(f'You entered "{choice}"')
     except ValueError as e:
         print(f"Invalid choice: {e}, please try again.\n")
         return False
