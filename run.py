@@ -1,4 +1,5 @@
 import random
+import time
 import sys
 import gspread
 from google.oauth2.service_account import Credentials
@@ -67,8 +68,11 @@ def sweet_chosen():
     """
     Randomly selects a recipe from the "sweet" worksheet of the 
     linked Google Sheet.
+    Includes 4-second time delay between 'fetching' message
+    and recipe appearing.
     """
-    print("Here is your randomly selected sweet recipe...\n")
+    print("Fetching your randomly selected sweet recipe...\n")
+    time.sleep(4)
     sweet_sheet = SHEET.worksheet("sweet")
     sweet_item = sweet_sheet.row_values(random.randint(2, 11))
     print(
@@ -89,6 +93,8 @@ def savoury_chosen():
     entered "meat" or "no meat" from the terminal.
     Then randomly selects a recipe from the "savoury, meat" or
     the "savoury, no meat" worksheet of the linked Google Sheet.
+    Includes 4-second time delay between 'fetching' message
+    and recipe appearing.
     """
     while True:
         input_meat_or_not = input(
@@ -98,7 +104,8 @@ def savoury_chosen():
             print(f"\nThank you for choosing {meat_or_not}!\n")
             break
     if meat_or_not == "meat":
-        print("Here is your randomly selected savoury with meat recipe...\n")
+        print("Fetching your randomly selected savoury with meat recipe...\n")
+        time.sleep(4)
         savoury_meat_sheet = SHEET.worksheet("savoury, meat")
         savoury_meat_item = savoury_meat_sheet.row_values(
             random.randint(2, 11))
@@ -112,10 +119,11 @@ def savoury_chosen():
             f"\n{savoury_meat_item[5]}"
         )
     elif meat_or_not == "no meat":
-        print("Here is your randomly selected savoury without meat recipe...\n")
+        print("Fetching your randomly selected savoury without meat recipe...\n")
+        time.sleep(4)
         savoury_no_meat_sheet = SHEET.worksheet("savoury, no meat")
         savoury_no_meat_item = savoury_no_meat_sheet.row_values(
-            random.randint(2, 11))
+            random.randint(2, 10))
         print(
             f"RECIPE: {savoury_no_meat_item[0]}\n" +
             f"\nIndredient 1: {savoury_no_meat_item[1]}\n" +
