@@ -68,8 +68,8 @@ def sweet_chosen():
     """
     Randomly selects a recipe from the "sweet" worksheet of the 
     linked Google Sheet.
-    Includes 4-second time delay between 'fetching' message
-    and recipe appearing.
+    Includes 4-second time delays between 'fetching' message
+    and recipe and steps appearing.
     """
     print("Fetching your randomly selected sweet recipe...\n")
     time.sleep(4)
@@ -80,7 +80,11 @@ def sweet_chosen():
         f"\nIndredient 1: {sweet_item[1]}\n" +
         f"Ingredient 2: {sweet_item[2]}\n" +
         f"Ingredient 3: {sweet_item[3]}\n" +
-        f"\n30 minutes or under? {sweet_item[4]}\n" +
+        f"\n30 minutes or under? {sweet_item[4]}\n"
+    )
+    print("\nFetching cooking steps...\n")
+    time.sleep(4)
+    print(
         "\nSTEPS: \n" +
         f"\n{sweet_item[5]}"
     )
@@ -93,8 +97,8 @@ def savoury_chosen():
     entered "meat" or "no meat" from the terminal.
     Then randomly selects a recipe from the "savoury, meat" or
     the "savoury, no meat" worksheet of the linked Google Sheet.
-    Includes 4-second time delay between 'fetching' message
-    and recipe appearing.
+    Includes 4-second time delays between 'fetching' message
+    and recipe and steps appearing.
     """
     while True:
         input_meat_or_not = input(
@@ -114,7 +118,11 @@ def savoury_chosen():
             f"\nIndredient 1: {savoury_meat_item[1]}\n" +
             f"Ingredient 2: {savoury_meat_item[2]}\n" +
             f"Ingredient 3: {savoury_meat_item[3]}\n" +
-            f"\n30 minutes or under? {savoury_meat_item[4]}\n" +
+            f"\n30 minutes or under? {savoury_meat_item[4]}\n"
+        )
+        print("\nFetching cooking steps...\n")
+        time.sleep(4)
+        print(
             "\nSTEPS: \n" +
             f"\n{savoury_meat_item[5]}"
         )
@@ -129,8 +137,12 @@ def savoury_chosen():
             f"\nIndredient 1: {savoury_no_meat_item[1]}\n" +
             f"Ingredient 2: {savoury_no_meat_item[2]}\n" +
             f"Ingredient 3: {savoury_no_meat_item[3]}\n" +
-            f"\n30 minutes or under? {savoury_no_meat_item[4]}\n" +
-            "\nSTEPS: \n" +
+            f"\n30 minutes or under? {savoury_no_meat_item[4]}\n"
+        )
+        print("\nFetching cooking steps...\n")
+        time.sleep(4)
+        print(
+            f"\nSTEPS: \n"
             f"\n{savoury_no_meat_item[5]}"
         )
 
