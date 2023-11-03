@@ -1,6 +1,7 @@
 import random
 import gspread
 from google.oauth2.service_account import Credentials
+import sys
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -153,7 +154,8 @@ def happy_with_recipe():
             print(f"\nYou chose {is_user_happy}...\n")
             break
     if is_user_happy == "yes":
-        print("\nGreat! Enjoy your dish!\n")
+        print("\nGreat! Enjoy your dish! And come back soon.\n")
+        sys.exit()
     elif is_user_happy == "no":
         try_again()
 
@@ -170,6 +172,7 @@ def try_again():
         main()
     elif try_again == "no":
         print("\nSorry we couldn't help today. Please come back soon. Goodbye!\n")
+        sys.exit()
 
 
 def validate_is_user_happy(choice):
