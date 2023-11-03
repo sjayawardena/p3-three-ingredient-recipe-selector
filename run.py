@@ -36,7 +36,7 @@ def choose_recipe_type():
 
 def validate_recipe_type_choice(choice):
     """
-    Return True if user entered "sweet" or "savoury".
+    Return True if user successfully entered "sweet" or "savoury".
     If not, then raise a value error, prompting them to try again.
     """
     if choice == "sweet" or choice == "savoury":
@@ -52,6 +52,10 @@ def validate_recipe_type_choice(choice):
 
 
 def sweet_or_savoury():
+    """ 
+    Give user a choice of sweet or savoury recipes.
+    Run corresponding function for each choice.
+    """
     chosen_recipe_type = choose_recipe_type()
     if chosen_recipe_type == "sweet":
         sweet_chosen()
@@ -61,8 +65,8 @@ def sweet_or_savoury():
 
 def sweet_chosen():
     """
-    Randomly selects a recipe from the
-    "sweet" worksheet of the linked Google Sheet.
+    Randomly selects a recipe from the "sweet" worksheet of the 
+    linked Google Sheet.
     """
     print("Here is your randomly selected sweet recipe...\n")
     sweet_sheet = SHEET.worksheet("sweet")
@@ -146,7 +150,8 @@ def happy_with_recipe():
     Use a while loop to validate whether user has entered "yes" or "no"
     via the terminal.
     The user will be repeatedly prompted to enter their choice until valid.
-    Offer user a choice of how to proceed if they are not happy.
+    If user successfully enters 'yes', show end message then sys.exit().
+    If user successfully enters 'no', then run try_again().
     """
     while True:
         input_is_user_happy = input(
@@ -165,6 +170,11 @@ def happy_with_recipe():
 
 
 def try_again():
+    """ 
+    Offer user to start the process again if not happy with recipe.
+    If yes, run main() function from start.
+    If not, goodbye message and sys.exit().
+    """
     while True:
         input_try_again = input(
             '\nWould you like to try again?\nPlease enter "yes" or "no".\n').lower()
