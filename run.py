@@ -1,7 +1,8 @@
 import random
+import sys
 import gspread
 from google.oauth2.service_account import Credentials
-import sys
+
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -72,7 +73,7 @@ def sweet_chosen():
         f"Ingredient 2: {sweet_item[2]}\n" +
         f"Ingredient 3: {sweet_item[3]}\n" +
         f"\n30 minutes or under? {sweet_item[4]}\n" +
-        f"\nSTEPS: \n" +
+        "\nSTEPS: \n" +
         f"\n{sweet_item[5]}"
     )
 
@@ -95,14 +96,15 @@ def savoury_chosen():
     if meat_or_not == "meat":
         print("Here is your randomly selected savoury with meat recipe...\n")
         savoury_meat_sheet = SHEET.worksheet("savoury, meat")
-        savoury_meat_item = savoury_meat_sheet.row_values(random.randint(2, 11))
+        savoury_meat_item = savoury_meat_sheet.row_values(
+            random.randint(2, 11))
         print(
             f"RECIPE: {savoury_meat_item[0]}\n" +
             f"\nIndredient 1: {savoury_meat_item[1]}\n" +
             f"Ingredient 2: {savoury_meat_item[2]}\n" +
             f"Ingredient 3: {savoury_meat_item[3]}\n" +
             f"\n30 minutes or under? {savoury_meat_item[4]}\n" +
-            f"\nSTEPS: \n" +
+            "\nSTEPS: \n" +
             f"\n{savoury_meat_item[5]}"
         )
     elif meat_or_not == "no meat":
@@ -116,7 +118,7 @@ def savoury_chosen():
             f"Ingredient 2: {savoury_no_meat_item[2]}\n" +
             f"Ingredient 3: {savoury_no_meat_item[3]}\n" +
             f"\n30 minutes or under? {savoury_no_meat_item[4]}\n" +
-            f"\nSTEPS: \n" +
+            "\nSTEPS: \n" +
             f"\n{savoury_no_meat_item[5]}"
         )
 
@@ -148,7 +150,9 @@ def happy_with_recipe():
     """
     while True:
         input_is_user_happy = input(
-            '\nAre you happy with the recipe selected for you? \nPlease enter "yes" or "no":\n').lower()
+            '\nAre you happy with the recipe selected for you?' +
+            '\nPlease enter "yes" or "no":\n'
+        ).lower()
         is_user_happy = input_is_user_happy
         if validate_is_user_happy(is_user_happy):
             print(f"\nYou chose {is_user_happy}...\n")
