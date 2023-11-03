@@ -24,7 +24,7 @@ def choose_recipe_type():
     print("Welcome to the Three-Ingredient Recipe Selector.\n")
     while True:
         input_recipe_type_choice = input(
-            'Please enter either "sweet" or "savoury": \n')
+            'Please enter either "sweet" or "savoury": \n').lower()
         recipe_type_choice = input_recipe_type_choice
         if validate_recipe_type_choice(recipe_type_choice):
             print(f"\nThank you for choosing {recipe_type_choice}!\n")
@@ -86,7 +86,7 @@ def savoury_chosen():
     """
     while True:
         input_meat_or_not = input(
-            'Please enter either "meat" or "no meat": \n')
+            'Please enter either "meat" or "no meat": \n').lower()
         meat_or_not = input_meat_or_not
         if validate_meat_or_not(meat_or_not):
             print(f"\nThank you for choosing {meat_or_not}!\n")
@@ -147,7 +147,7 @@ def happy_with_recipe():
     """
     while True:
         input_is_user_happy = input(
-            '\nAre you happy with the recipe selected for you? \nPlease enter "yes" or "no":\n')
+            '\nAre you happy with the recipe selected for you? \nPlease enter "yes" or "no":\n').lower()
         is_user_happy = input_is_user_happy
         if validate_is_user_happy(is_user_happy):
             print(f"\nYou chose {is_user_happy}...\n")
@@ -161,7 +161,7 @@ def happy_with_recipe():
 def try_again():
     while True:
         input_try_again = input(
-            '\nWould you like to try again?\nPlease enter "yes" or "no".\n')
+            '\nWould you like to try again?\nPlease enter "yes" or "no".\n').lower()
         try_again = input_try_again
         if validate_try_again(try_again):
             print(f"\nYou chose {try_again}...\n")
