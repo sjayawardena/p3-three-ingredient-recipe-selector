@@ -97,7 +97,10 @@ def savoury_chosen():
     and recipe and steps appearing.
     """
     while True:
-        input_meat_or_not = input('Please enter either "meat" or "no meat": \n').lower()
+        input_meat_or_not = input(
+            'Please enter either \
+"meat" or "no meat": \n'
+        ).lower()
         meat_or_not = input_meat_or_not
         if validate_meat_or_not(meat_or_not):
             print(f"\nThank you for choosing {meat_or_not}!\n")
@@ -106,7 +109,8 @@ def savoury_chosen():
         print("Fetching your randomly selected savoury with meat recipe...\n")
         time.sleep(4)
         savoury_meat_sheet = SHEET.worksheet("savoury, meat")
-        savoury_meat_item = savoury_meat_sheet.row_values(random.randint(2, 11))
+        savoury_meat_item = \
+            savoury_meat_sheet.row_values(random.randint(2, 11))
         print(
             f"RECIPE: {savoury_meat_item[0]}\n"
             + f"\nIndredient 1: {savoury_meat_item[1]}\n"
@@ -118,10 +122,14 @@ def savoury_chosen():
         time.sleep(4)
         print("\nSTEPS: \n" + f"\n{savoury_meat_item[5]}")
     elif meat_or_not == "no meat":
-        print("Fetching your randomly selected savoury without meat recipe...\n")
+        print(
+            "Fetching your randomly selected \
+savoury without meat recipe...\n"
+        )
         time.sleep(4)
         savoury_no_meat_sheet = SHEET.worksheet("savoury, no meat")
-        savoury_no_meat_item = savoury_no_meat_sheet.row_values(random.randint(2, 10))
+        savoury_no_meat_item = \
+            savoury_no_meat_sheet.row_values(random.randint(2, 10))
         print(
             f"RECIPE: {savoury_no_meat_item[0]}\n"
             + f"\nIndredient 1: {savoury_no_meat_item[1]}\n"
@@ -191,7 +199,10 @@ def try_again():
     if try_again == "yes":
         main()
     elif try_again == "no":
-        print("\nSorry we couldn't help today. Please come back soon. Goodbye!\n")
+        print(
+            "\nSorry we couldn't help today.\
+        Please come back soon. Goodbye!\n"
+        )
         sys.exit()
 
 
