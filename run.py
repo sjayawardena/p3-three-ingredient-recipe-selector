@@ -247,8 +247,3 @@ def main():
 
 
 main()
-
-# Examples of getting stuff from sheet
-# sweet_sheet = SHEET.worksheet("sweet")
-# sweet_item = sweet_sheet.row_values(random.randint(2, 3))
-# print(sweet_item)
