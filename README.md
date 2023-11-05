@@ -2,7 +2,7 @@
 
 ![Screenshot from ui.dev/ am I responsive?](assets/images/screenshots-etc/project-3-am-I-responsive-screenshot.png)
 
-Welcome! The Tree-Ingredient Recipe Selector is a Command Line Interface application whereby users can retrieve recipes which only require three ingredients.
+Welcome! The Three-Ingredient Recipe Selector is a Command Line Interface application whereby users can retrieve recipes which only require three ingredients.
 
 It is the third project for my Diploma in Full Stack Software Development, and utilises Python.
 
