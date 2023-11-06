@@ -134,7 +134,7 @@ The site was set up by creating a new repository on GitHub, using [this](https:/
 
 The development environment used was Gitpod. This was opened initially via the green 'GitPod' button that appeared on the repo's listing on GitHub.
 
-The initial 'git add', 'git commit' and 'git push' were made on 27 October 2023. There have been over nearly 30 further commits since then.
+The initial 'git add', 'git commit' and 'git push' were made on 27 October 2023. There have been 30 further commits since then.
 
 The regular commits and pushes were sent from GitPod back to the repo on GitHub.
 
